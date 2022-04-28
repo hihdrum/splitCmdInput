@@ -24,8 +24,10 @@ $isFirst = $true
 # 1行ごとにループする。
 foreach($line in $f) {
 
-    # 先頭がroot@vMX1かどうかを判定する。
-    if($line -match "^" + $prompt + "`(.*)") {
+    # 行頭がプロンプト文字列かどうかを判定する。
+    if($line -match "^$prompt`(.*)") {
+
+        # プロンプト文字列の場合
 
         # 初回判定
         if($true -eq $isFirst) {
@@ -51,7 +53,6 @@ foreach($line in $f) {
 
 if("" -ne $oneBlockStr[0])
 {
-    # 先頭がroot@vMX1の場合
     $key = $matches[1]
     $data = $oneBlockStr -join "`r`n"
     $results[$key] = $data
