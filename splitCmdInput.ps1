@@ -41,7 +41,7 @@ function splitCmdInput() {
                 $data = $oneBlockStr -join "`r`n"
                 $results[$key] = $data
 
-                $oneBlockStr = @($line)
+                $oneBlockStr = @()
                 $isFirst = $false
                 continue
             }
@@ -52,6 +52,7 @@ function splitCmdInput() {
             $data = $oneBlockStr -join "`r`n"
             $results[$key] = $data
             $oneBlockStr = @()
+            continue
         }
 
         # 行頭がプロンプト文字列でない場合
