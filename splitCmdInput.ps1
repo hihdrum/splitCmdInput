@@ -72,6 +72,15 @@ function splitCmdInput() {
 
 $splitData = splitCmdInput($logfile, $prompt)
 
-$splitData.Keys | foreach { $name = $_ -replace " ", "_"; $invalidChars = [IO.Path]::GetInvalidFileNameChars() -join ''; $re = "[{0}]" -f [RegEx]::Escape($invalidChars); $name = $name -replace $re; $outpath = Join-Path $outFolder $name; $d[$_] > $outpath }
+$splitData.Keys | foreach {
+
+    $name = $_ -replace " ", "_"
+    $invalidChars = [IO.Path]::GetInvalidFileNameChars() -join ''
+    $re = "[{0}]" -f [RegEx]::Escape($invalidChars)
+    $name = $name -replace $re, '_'
+    $outpath = Join-Path $outFolder $name
+
+    $splitData[$_] > $outpath
+}
 
 return $splitData
