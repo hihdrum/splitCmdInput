@@ -1,0 +1,12 @@
+﻿省略無しで出力する。
+
+> $data1 | Format-Table -AutoSize -Wrap
+
+連想配列のキー一覧取得
+
+> $data1.Keys
+
+連想配列のキーからインデックスを取得する。
+
+> $($data1.Keys).IndexOf('show services advanced-anti-malware statistics')
+
