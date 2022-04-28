@@ -29,8 +29,10 @@ foreach($line in $f) {
 
         # プロンプト文字列の場合
 
-        # 初回判定
+        # 初プロンプト判定
         if($true -eq $isFirst) {
+
+            # 初回の場合
 
             $key = "Begin"
             $data = $oneBlockStr -join "`r`n"
@@ -43,16 +45,15 @@ foreach($line in $f) {
 
         # 初回でない場合
 
-        # 先頭がroot@vMX1の場合
         $key = $matches[1]
         $data = $oneBlockStr -join "`r`n"
         $results[$key] = $data
         $oneBlockStr = @()
     }
 
+    # 行頭がプロンプト文字列でない場合
     $oneBlockStr += $line
 
-    #Write-Host $line
 }
 
 if("" -ne $oneBlockStr[0])
