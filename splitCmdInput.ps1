@@ -32,6 +32,10 @@ foreach($line in $f) {
         # 初回判定
         if($true -eq $isFirst) {
 
+            $key = "Begin"
+            $data = $oneBlockStr -join "`r`n"
+            $results[$key] = $data
+
             $oneBlockStr = @($line)
             $isFirst = $false
             continue
