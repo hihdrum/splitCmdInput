@@ -3,6 +3,8 @@
     [Parameter(Mandatory=$true)]$outFolder # プロンプト部分を文字列で指定する。
 )
 
+New-Item -ItemType Directory -Force $outFolder
+
 $data.Keys | foreach {
 
     $name = $_ -replace " ", "_"
